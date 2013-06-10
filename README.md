@@ -1,3 +1,8 @@
+What's this Fork?
+=================
+
+Provides pre-Chef1.8 compatibility for easier Amazon OpsWorks deploys
+
 Description
 ===========
 A cookbook to install [Composer](http://getcomposer.org) and maintain composer packages within project deployments.

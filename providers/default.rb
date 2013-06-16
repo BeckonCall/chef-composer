@@ -55,6 +55,23 @@ action :install do
     not_if "test -f #{new_resource.install_path}/composer"
     command "ln -nsf #{new_resource.install_path}/composer.phar #{new_resource.install_path}/composer"
   end
+
+  directory(File.join("~", ".composer")) do
+    mode 0644
+    owner new_resource.owner
+    group new_resource.owner
+    only_if { new_resource.github_oauth_token }
+  end
+
+  template(File.join("~", ".composer", "config.json")) do
+    mode 0600
+    owner new_resource.owner
+    group new_resource.owner
+    source "composer-config-json.erb"
+    variables(:github_oauth_token => new_resource.github_oauth_token)
+    
+    only_if { new_resource.github_oauth_token }
+  end
 end
 
 action :uninstall do

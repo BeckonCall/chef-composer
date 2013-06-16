@@ -1,7 +1,8 @@
 What's this Fork?
 =================
 
-Provides pre-Chef1.8 compatibility for easier Amazon OpsWorks deploys
+* Provides pre-Chef1.8 compatibility for easier Amazon OpsWorks deploys
+* Provides ability to specify OAuth key for GitHub deploys
 
 Description
 ===========
@@ -22,6 +23,7 @@ Attributes
 default[:composer][:install_path] = "/usr/local/bin"
 default[:composer][:owner] = "root" # apache|www-data|root|whatever
 default[:composer][:project][:dev] = false
+default[:composer][:github_oauth_token] = false
 ```
 
 Usage

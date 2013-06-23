@@ -22,5 +22,6 @@
 #
 
 composer "/usr/local/bin" do
+  github_oauth_token node[:composer][:github_oauth_token] || false
   action [:install, :update]
 end

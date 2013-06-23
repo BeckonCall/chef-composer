@@ -21,4 +21,4 @@ actions :install, :uninstall, :update
 
 attribute :install_path, :kind_of => String, :name_attribute => true
 attribute :owner, :default => "root", :kind_of => [String, Integer]
-attribute :github_oauth_token, :default => false, :kind_of => [String]
+attribute :github_oauth_token, :default => false, :kind_of => [String, FalseClass]

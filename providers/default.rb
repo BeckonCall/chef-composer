@@ -40,6 +40,10 @@ def find_php
   end
 end
 
+def file_join_expand *args
+  ::File.expand_path(::File.join(*args))
+end
+
 
 action :install do
   find_php()
@@ -51,19 +55,20 @@ action :install do
     owner new_resource.owner
     mode 0755
   end
+
   execute "ln-composer" do
     not_if "test -f #{new_resource.install_path}/composer"
     command "ln -nsf #{new_resource.install_path}/composer.phar #{new_resource.install_path}/composer"
   end
 
-  directory(::File.join("~", ".composer")) do
+  directory(file_join_expand("~", ".composer")) do
     mode 0644
     owner new_resource.owner
     group new_resource.owner
     only_if { new_resource.github_oauth_token }
   end
 
-  template(::File.join("~", ".composer", "config.json")) do
+  template(file_join_expand("~", ".composer", "config.json")) do
     mode 0600
     owner new_resource.owner
     group new_resource.owner

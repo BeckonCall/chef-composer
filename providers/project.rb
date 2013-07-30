@@ -25,7 +25,7 @@ action :install do
     dev = new_resource.dev ? "--dev" : "--no-dev"
     user new_resource.run_as
     environment({"COMPOSER_HOME" => "/home/#{new_resource.run_as}/.composer"})
-    command "composer install -n --no-ansi -q #{dev}"
+    command "composer install -n --no-ansi #{dev}"
   end
 end
 action :update do
@@ -35,7 +35,7 @@ action :update do
     dev = new_resource.dev ? "--dev" : "--no-dev"
     user new_resource.run_as
     environment({"COMPOSER_HOME" => "/home/#{new_resource.run_as}/.composer"})
-    command "composer update -n --no-ansi -q #{dev}"
+    command "composer update -n --no-ansi #{dev}"
   end
 end
 
@@ -46,6 +46,6 @@ action :dump_autoload do
     dev = new_resource.dev ? "--dev" : "--no-dev"
     user new_resource.run_as
     environment({"COMPOSER_HOME" => "/home/#{new_resource.run_as}/.composer"})
-    command "composer update -n --no-ansi -q #{dev}"
+    command "composer update -n --no-ansi #{dev}"
   end
 end

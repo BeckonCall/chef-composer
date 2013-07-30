@@ -46,6 +46,6 @@ action :dump_autoload do
     dev = new_resource.dev ? "--dev" : "--no-dev"
     user new_resource.run_as
     environment({"COMPOSER_HOME" => "/home/#{new_resource.run_as}/.composer"})
-    command "composer dump-autoload -n --no-ansi #{dev}"
+    command "composer dump-autoload -n --no-ansi"
   end
 end
